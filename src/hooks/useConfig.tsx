@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 
 export function useConfig() {
-  const [speed, setSpeed] = useState(2500);
-  const [numberOfRounds, setNumberOfRounds] = useState(10);
-  const [min, setMin] = useState(-9);
-  const [max, setMax] = useState(9);
+  const [config, setConfig] = useState({
+    speed: 2500,
+    numberOfRounds: 10,
+    min: -9,
+    max: 9,
+  });
 
   const isFirstRender = useRef(true);
 
@@ -13,10 +15,7 @@ export function useConfig() {
 
     if (config) {
       const { speed, numberOfRounds, min, max } = JSON.parse(config);
-      setSpeed(speed);
-      setNumberOfRounds(numberOfRounds);
-      setMin(min);
-      setMax(max);
+      setConfig({ speed, numberOfRounds, min, max });
     }
   }, []);
 
@@ -26,23 +25,17 @@ export function useConfig() {
       return;
     }
 
-    const config = {
-      speed,
-      numberOfRounds,
-      min,
-      max,
+    const newConfig = {
+      speed: config.speed,
+      numberOfRounds: config.numberOfRounds,
+      min: config.min,
+      max: config.max,
     };
-    localStorage.setItem("config", JSON.stringify(config));
-  }, [speed, numberOfRounds, min, max]);
+    localStorage.setItem("config", JSON.stringify(newConfig));
+  }, [config]);
 
   return {
-    speed,
-    numberOfRounds,
-    min,
-    max,
-    setSpeed,
-    setNumberOfRounds,
-    setMin,
-    setMax,
+    config,
+    setConfig,
   };
 }

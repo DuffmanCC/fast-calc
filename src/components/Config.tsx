@@ -1,50 +1,45 @@
+import type { Config } from "../types";
 import Input from "./Input";
 
 interface ConfigProps {
-  speed: number;
-  numberOfRounds: number;
-  min: number;
-  max: number;
-  setSpeed: (speed: number) => void;
-  setNumberOfRounds: (numberOfRounds: number) => void;
-  setMin: (min: number) => void;
-  setMax: (max: number) => void;
+  config: {
+    speed: number;
+    numberOfRounds: number;
+    min: number;
+    max: number;
+  };
+  setConfig: (config: Config) => void;
 }
 
-export default function Config({
-  speed,
-  numberOfRounds,
-  min,
-  max,
-  setSpeed,
-  setNumberOfRounds,
-  setMin,
-  setMax,
-}: ConfigProps) {
+export default function Config({ setConfig, config }: ConfigProps) {
   return (
     <form className="flex gap-2 justify-center w-full">
       <Input
         label="Speed"
-        onChange={(e) => setSpeed(Number(e.target.value))}
-        value={speed}
+        onChange={(e) =>
+          setConfig({ ...config, speed: Number(e.target.value) })
+        }
+        value={config.speed}
       />
 
       <Input
         label="Rounds"
-        onChange={(e) => setNumberOfRounds(Number(e.target.value))}
-        value={numberOfRounds}
+        onChange={(e) =>
+          setConfig({ ...config, numberOfRounds: Number(e.target.value) })
+        }
+        value={config.numberOfRounds}
       />
 
       <Input
         label="Min"
-        onChange={(e) => setMin(Number(e.target.value))}
-        value={min}
+        onChange={(e) => setConfig({ ...config, min: Number(e.target.value) })}
+        value={config.min}
       />
 
       <Input
         label="Max"
-        onChange={(e) => setMax(Number(e.target.value))}
-        value={max}
+        onChange={(e) => setConfig({ ...config, max: Number(e.target.value) })}
+        value={config.max}
       />
     </form>
   );

@@ -1,19 +1,11 @@
 import Button from "./components/Button";
 import Config from "./components/Config";
+import Countdown from "./components/Countdown";
 import { useConfig } from "./hooks/useConfig";
 import { useGame } from "./hooks/useGame";
 
 export default function App() {
-  const {
-    speed,
-    numberOfRounds,
-    min,
-    max,
-    setSpeed,
-    setNumberOfRounds,
-    setMin,
-    setMax,
-  } = useConfig();
+  const { config, setConfig } = useConfig();
 
   const {
     isPlaying,
@@ -25,7 +17,8 @@ export default function App() {
     isFinished,
     reset,
     setShowResult,
-  } = useGame(min, max, speed, numberOfRounds);
+    showCountdown,
+  } = useGame(config);
 
   return (
     <div className="relative container mx-auto text-center flex flex-col h-screen gap-8 max-w-screen-sm py-4 lg:py-12 px-4">
@@ -66,22 +59,19 @@ export default function App() {
         </div>
       </div>
 
-      <Config
-        speed={speed}
-        numberOfRounds={numberOfRounds}
-        min={min}
-        max={max}
-        setSpeed={setSpeed}
-        setNumberOfRounds={setNumberOfRounds}
-        setMin={setMin}
-        setMax={setMax}
-      />
+      <Config config={config} setConfig={setConfig} />
 
       <div className="">
         <p className="bg-black text-white px-4 py-2 w-full font-mono">
           {JSON.stringify(arr)}
         </p>
       </div>
+
+      {showCountdown && (
+        <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex justify-center items-center">
+          <Countdown init={3} />
+        </div>
+      )}
     </div>
   );
 }

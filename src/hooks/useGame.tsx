@@ -1,17 +1,14 @@
 import { useEffect, useState } from "react";
+import type { Config } from "../types";
 
-export function useGame(
-  min: number,
-  max: number,
-  speed: number,
-  numberOfRounds: number
-) {
+export function useGame(config: Config) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [arr, setArr] = useState<number[]>([]);
   const [round, setRound] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
   const [opacity, setOpacity] = useState(false);
+  const [showCountdown, setShowCountdown] = useState(false);
 
   function randomNumber(min: number, max: number) {
     let num;
@@ -32,27 +29,41 @@ export function useGame(
   useEffect(() => {
     if (!isPlaying) return;
 
-    const interval = setInterval(() => {
-      setOpacity(false);
+    setShowCountdown(true);
 
-      setTimeout(() => {
-        const rand = randomNumber(min, max);
-        setArr((prev) => [...prev, rand]);
-        setRound((prev) => prev + 1);
+    const countdownId = setTimeout(() => {
+      const intervalId = setInterval(() => {
+        setOpacity(false);
 
-        setOpacity(true);
-      }, 150);
-    }, speed);
+        const opacityId = setTimeout(() => {
+          const rand = randomNumber(config.min, config.max);
+          setArr((prev) => [...prev, rand]);
+          setRound((prev) => prev + 1);
 
-    return () => clearInterval(interval);
-  }, [isPlaying, speed, min, max]);
+          setOpacity(true);
+          clearInterval(opacityId);
+        }, 150);
+      }, config.speed);
+
+      setShowCountdown(false);
+
+      setTimeout(
+        () => clearInterval(intervalId),
+        config.speed * config.numberOfRounds
+      );
+    }, 3000);
+
+    return () => {
+      clearTimeout(countdownId);
+    };
+  }, [isPlaying, config]);
 
   useEffect(() => {
-    if (round === numberOfRounds) {
+    if (round === config.numberOfRounds) {
       setIsPlaying(false);
       setIsFinished(true);
     }
-  }, [round, numberOfRounds]);
+  }, [round, config.numberOfRounds]);
 
   return {
     isPlaying,
@@ -64,5 +75,6 @@ export function useGame(
     opacity,
     reset,
     setShowResult,
+    showCountdown,
   };
 }
