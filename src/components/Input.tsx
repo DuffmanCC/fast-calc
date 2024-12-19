@@ -10,7 +10,7 @@ export default function Input({ label, onChange, value = 0 }: InputProps) {
       {label}
       <input
         type="number"
-        className="border px-4 py-2 leading-none w-20 md:w-24 text-center rounded"
+        className="border px-4 py-2 leading-none w-24 md:w-24 text-center rounded"
         onChange={onChange}
         value={value}
       />

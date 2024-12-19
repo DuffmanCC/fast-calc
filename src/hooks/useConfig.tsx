@@ -1,12 +1,8 @@
 import { useEffect, useRef, useState } from "react";
+import { DEFAULT_CONFIG } from "../tools/constants";
 
 export function useConfig() {
-  const [config, setConfig] = useState({
-    speed: 2500,
-    numberOfRounds: 10,
-    min: -9,
-    max: 9,
-  });
+  const [config, setConfig] = useState(DEFAULT_CONFIG);
 
   const isFirstRender = useRef(true);
 
@@ -14,8 +10,9 @@ export function useConfig() {
     const config = localStorage.getItem("config");
 
     if (config) {
-      const { speed, numberOfRounds, min, max } = JSON.parse(config);
-      setConfig({ speed, numberOfRounds, min, max });
+      const { speed, numberOfRounds, min, max, includeZero } =
+        JSON.parse(config);
+      setConfig({ speed, numberOfRounds, min, max, includeZero });
     }
   }, []);
 
@@ -30,6 +27,7 @@ export function useConfig() {
       numberOfRounds: config.numberOfRounds,
       min: config.min,
       max: config.max,
+      includeZero: config.includeZero,
     };
     localStorage.setItem("config", JSON.stringify(newConfig));
   }, [config]);

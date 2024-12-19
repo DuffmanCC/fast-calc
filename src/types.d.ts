@@ -3,4 +3,5 @@ export type Config = {
   numberOfRounds: number;
   min: number;
   max: number;
+  includeZero: boolean;
 };
