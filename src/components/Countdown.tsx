@@ -19,12 +19,14 @@ export default function Countdown({ init }: { init: number }) {
   }, [countdown]);
 
   return (
-    <div
-      role="timer"
-      aria-live="polite"
-      className="text-[20rem] p-6 flex justify-center text-white font-mono no-scrollbar overflow-hidden"
-    >
-      {countdown}
+    <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex justify-center items-center">
+      <div
+        role="timer"
+        aria-live="polite"
+        className="text-[20rem] p-6 flex justify-center text-white font-mono no-scrollbar overflow-hidden"
+      >
+        {countdown}
+      </div>
     </div>
   );
 }
