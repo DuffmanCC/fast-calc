@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { COUNTDOWN_DURATION, OPACITY_DURATION } from "../tools/constants";
+import { randomNumber } from "../tools/helpers";
 import type { Config } from "../types";
 
 export function useGame(config: Config) {
@@ -10,18 +11,6 @@ export function useGame(config: Config) {
   const [isFinished, setIsFinished] = useState(false);
   const [opacity, setOpacity] = useState(false);
   const [showCountdown, setShowCountdown] = useState(false);
-
-  function randomNumber(min: number, max: number, includeZero = false) {
-    if (includeZero) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    let num;
-    do {
-      num = Math.floor(Math.random() * (max - min + 1)) + min;
-    } while (num === 0);
-    return num;
-  }
 
   function reset() {
     setIsPlaying(false);
