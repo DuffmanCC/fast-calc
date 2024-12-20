@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import { render, screen, waitFor } from "@testing-library/react";
+import { act, render, screen, waitFor } from "@testing-library/react";
 import "chai/register-should";
 import { expect, test } from "vitest";
 import App from "../src/App";
@@ -19,7 +19,9 @@ test("Start is not disabled at the begining", () => {
 test("Start is disabled after starting", async () => {
   render(<App />);
   const button = screen.getByText("Start");
-  button.click();
+  act(() => {
+    button.click();
+  });
 
   await waitFor(() => {
     expect(button).toBeDisabled();
@@ -35,7 +37,9 @@ test("Show Result is disabled at the begining", () => {
 test("Countdown starts after start button is clicked", async () => {
   render(<App />);
   const button = screen.getByText("Start");
-  button.click();
+  act(() => {
+    button.click();
+  });
 
   await waitFor(() => {
     const countdown = screen.getByText("3");
@@ -46,7 +50,9 @@ test("Countdown starts after start button is clicked", async () => {
 test("Countdown disappears after 3 seconds", async () => {
   render(<App />);
   const button = screen.getByText("Start");
-  button.click();
+  act(() => {
+    button.click();
+  });
 
   await waitFor(
     () => {
@@ -68,7 +74,9 @@ test("Countdown disappears after 3 seconds", async () => {
 test("First number appears after countdown", async () => {
   render(<App />);
   const button = screen.getByText("Start");
-  button.click();
+  act(() => {
+    button.click();
+  });
 
   await waitFor(
     () => {
