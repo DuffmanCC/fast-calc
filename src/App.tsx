@@ -25,7 +25,7 @@ export default function App() {
   const [showConfig, setShowConfig] = useState(false);
 
   return (
-    <main className="relative container mx-auto text-center flex flex-col h-screen gap-8 max-w-screen-sm py-4 lg:py-12 px-4 bg-slate-100">
+    <main className="relative container mx-auto text-center flex flex-col h-screen gap-8 max-w-screen-sm py-4 lg:py-12 px-4 bg-slate-100 overflow-hidden">
       <header className="relative z-10">
         <h1 className="text-5xl">Fast Calc</h1>
 

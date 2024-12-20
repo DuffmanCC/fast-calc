@@ -11,4 +11,5 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./"), // Change this path according to your alias setup
     },
   },
+  base: "/fast-calc/",
 });
