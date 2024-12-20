@@ -12,20 +12,30 @@ test("render title", () => {
 
 test("Start is not disabled at the begining", () => {
   render(<App />);
-  const startButton = screen.getByText("Start");
-  expect(startButton).not.toBeDisabled();
+  const button = screen.getByText("Start");
+  expect(button).not.toBeDisabled();
+});
+
+test("Start is disabled after starting", async () => {
+  render(<App />);
+  const button = screen.getByText("Start");
+  button.click();
+
+  await waitFor(() => {
+    expect(button).toBeDisabled();
+  });
 });
 
 test("Show Result is disabled at the begining", () => {
   render(<App />);
-  const startButton = screen.getByText("Show Result");
-  expect(startButton).toBeDisabled();
+  const button = screen.getByText("Show Result");
+  expect(button).toBeDisabled();
 });
 
 test("Countdown starts after start button is clicked", async () => {
   render(<App />);
-  const startButton = screen.getByText("Start");
-  startButton.click();
+  const button = screen.getByText("Start");
+  button.click();
 
   await waitFor(() => {
     const countdown = screen.getByText("3");
@@ -35,8 +45,8 @@ test("Countdown starts after start button is clicked", async () => {
 
 test("Countdown disappears after 3 seconds", async () => {
   render(<App />);
-  const startButton = screen.getByText("Start");
-  startButton.click();
+  const button = screen.getByText("Start");
+  button.click();
 
   await waitFor(
     () => {
@@ -57,8 +67,8 @@ test("Countdown disappears after 3 seconds", async () => {
 
 test("First number appears after countdown", async () => {
   render(<App />);
-  const startButton = screen.getByText("Start");
-  startButton.click();
+  const button = screen.getByText("Start");
+  button.click();
 
   await waitFor(
     () => {

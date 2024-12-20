@@ -10,7 +10,7 @@ interface ConfigProps {
 
 export default function Config({ setConfig, config }: ConfigProps) {
   return (
-    <form className="flex flex-col gap-2 justify-center w-full">
+    <form className="flex flex-col gap-2 justify-center w-full p-4 py-20">
       {Object.entries(config).map(([key, value]) =>
         typeof value === "number" ? (
           <Input

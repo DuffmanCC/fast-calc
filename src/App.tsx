@@ -26,7 +26,7 @@ export default function App() {
 
   return (
     <main className="relative container mx-auto text-center flex flex-col h-screen gap-8 max-w-screen-sm py-4 lg:py-12 px-4 bg-slate-100 overflow-hidden">
-      <header className="relative z-10">
+      <header className="mt-10">
         <h1 className="text-5xl">Fast Calc</h1>
 
         <ButtonMenu onClick={() => setShowConfig(!showConfig)} />
@@ -51,9 +51,9 @@ export default function App() {
         <div className="flex flex-col gap-4">
           <Button
             onClick={() => setIsPlaying(!isPlaying)}
-            disabled={isFinished}
+            disabled={isPlaying || isFinished}
           >
-            {isPlaying ? "Stop" : "Start"}
+            Start
           </Button>
 
           <Button onClick={reset}>Reset</Button>
@@ -65,10 +65,12 @@ export default function App() {
       </div>
 
       <aside
-        className={`mt-20 w-full h-screen bg-slate-300 p-4 absolute left-0 top-0 block transition ${
+        className={`bg-slate-300 absolute inset-0 block transition ${
           showConfig ? "" : "-translate-x-full"
         }`}
       >
+        <ButtonMenu onClick={() => setShowConfig(!showConfig)} />
+
         <Config config={config} setConfig={setConfig} />
       </aside>
 

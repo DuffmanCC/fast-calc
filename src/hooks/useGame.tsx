@@ -11,6 +11,7 @@ export function useGame(config: Config) {
   const [isFinished, setIsFinished] = useState(false);
   const [opacity, setOpacity] = useState(true);
   const [showCountdown, setShowCountdown] = useState(false);
+  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
 
   function reset() {
     setIsPlaying(false);
@@ -18,6 +19,7 @@ export function useGame(config: Config) {
     setRound(0);
     setShowResult(false);
     setIsFinished(false);
+    if (intervalId) clearInterval(intervalId);
   }
 
   useEffect(() => {
@@ -44,6 +46,7 @@ export function useGame(config: Config) {
         }, OPACITY_DURATION);
       }, config.speed);
 
+      setIntervalId(intervalId);
       setShowCountdown(false);
 
       setTimeout(
