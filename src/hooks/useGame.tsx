@@ -9,7 +9,7 @@ export function useGame(config: Config) {
   const [round, setRound] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
-  const [opacity, setOpacity] = useState(false);
+  const [opacity, setOpacity] = useState(true);
   const [showCountdown, setShowCountdown] = useState(false);
 
   function reset() {
@@ -26,6 +26,11 @@ export function useGame(config: Config) {
     setShowCountdown(true);
 
     const countdownId = setTimeout(() => {
+      // first round without delay
+      const rand = randomNumber(config.min, config.max, config.includeZero);
+      setArr((prev) => [...prev, rand]);
+      setRound((prev) => prev + 1);
+
       const intervalId = setInterval(() => {
         setOpacity(false);
 
@@ -43,7 +48,7 @@ export function useGame(config: Config) {
 
       setTimeout(
         () => clearInterval(intervalId),
-        config.speed * config.numberOfRounds
+        config.speed * config.numberOfRounds - 1
       );
     }, COUNTDOWN_DURATION);
 

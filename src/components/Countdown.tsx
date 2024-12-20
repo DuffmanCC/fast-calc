@@ -19,7 +19,10 @@ export default function Countdown({ init }: { init: number }) {
   }, [countdown]);
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex justify-center items-center">
+    <div
+      className="fixed inset-0 bg-black bg-opacity-70 z-50 flex justify-center items-center"
+      data-testid="countdown"
+    >
       <div
         role="timer"
         aria-live="polite"

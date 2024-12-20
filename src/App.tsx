@@ -25,20 +25,21 @@ export default function App() {
   const [showConfig, setShowConfig] = useState(false);
 
   return (
-    <main className="relative container mx-auto text-center flex flex-col h-screen gap-8 max-w-screen-sm py-4 lg:py-12 px-4">
+    <main className="relative container mx-auto text-center flex flex-col h-screen gap-8 max-w-screen-sm py-4 lg:py-12 px-4 bg-slate-100">
       <header className="relative z-10">
         <h1 className="text-5xl">Fast Calc</h1>
 
         <ButtonMenu onClick={() => setShowConfig(!showConfig)} />
       </header>
 
-      <div className="flex flex-col gap-4 items-center grow">
+      <div className="flex flex-col gap-12 items-center grow">
         <p className="text-6x">Round: {round ? round : ""}</p>
 
         <p
-          className={`text-[10rem] h-[10rem] leading-none transition-opacity duration-75 ${
+          className={`text-[8rem] h-[8rem] leading-none transition-opacity duration-75 ${
             opacity ? "opacity-100" : "opacity-0"
           }`}
+          data-testid="number"
         >
           {showResult
             ? arr.reduce((acc, curr) => acc + curr, 0)
@@ -55,9 +56,7 @@ export default function App() {
             {isPlaying ? "Stop" : "Start"}
           </Button>
 
-          <Button onClick={reset} disabled={!isFinished}>
-            Reset
-          </Button>
+          <Button onClick={reset}>Reset</Button>
 
           <Button onClick={() => setShowResult(true)} disabled={!isFinished}>
             Show Result
@@ -66,7 +65,7 @@ export default function App() {
       </div>
 
       <aside
-        className={`pt-28 w-full h-screen bg-white absolute block transition ${
+        className={`mt-20 w-full h-screen bg-slate-300 p-4 absolute left-0 top-0 block transition ${
           showConfig ? "" : "-translate-x-full"
         }`}
       >
