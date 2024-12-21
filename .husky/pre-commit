@@ -1,10 +1,10 @@
-echo "Ejecutando tests..."
+echo "Executing tests..."
 
 # Ejecuta el test y captura el resultado
 npx vitest run --run --passWithNoTests > test-results.log 2>&1
 
 if grep -q "FAIL" test-results.log; then
-  echo "❌ Algunos tests fallaron. Revisa test-results.log"
+  echo "❌ Some tests fail. Check test-results.log"
   exit 1
 else
   echo "✅ Tests exitosos."
