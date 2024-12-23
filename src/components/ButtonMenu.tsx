@@ -1,7 +1,13 @@
-export default function ButtonMenu({ onClick }: { onClick: () => void }) {
+export default function ButtonMenu({
+  onClick,
+  isOpen,
+}: {
+  onClick: () => void;
+  isOpen: boolean;
+}) {
   return (
     <button
-      className="absolute right-4 top-4 hover:scale-105"
+      className="absolute right-4 top-4 hover:scale-105 z-10"
       onClick={onClick}
     >
       <svg
@@ -15,10 +21,20 @@ export default function ButtonMenu({ onClick }: { onClick: () => void }) {
         strokeLinejoin="round"
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <path d="M7 6h10" />
-        <path d="M4 12h16" />
-        <path d="M7 12h13" />
-        <path d="M7 18h10" />
+
+        {isOpen ? (
+          <>
+            <path d="M18 6l-12 12" />
+            <path d="M6 6l12 12" />
+          </>
+        ) : (
+          <>
+            <path d="M7 6h10" />
+            <path d="M4 12h16" />
+            <path d="M7 12h13" />
+            <path d="M7 18h10" />
+          </>
+        )}
       </svg>
     </button>
   );

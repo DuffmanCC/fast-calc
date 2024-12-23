@@ -1,3 +1,10 @@
+# Verificar la rama actual
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+if [ "$current_branch" != "main" ]; then
+  exit 0
+fi
+
 echo "Executing tests..."
 
 # Ejecuta el test y captura el resultado

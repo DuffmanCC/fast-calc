@@ -16,7 +16,7 @@ export const CONFIG_LABELS = {
   numberOfRounds: "Rounds",
   min: "Min",
   max: "Max",
-  limitMin: "Limit Min",
-  limitMax: "Limit Max",
-  includeZero: "Include Zero",
+  limitMin: "Limit sum min",
+  limitMax: "Limit sum max",
+  includeZero: "Include zero",
 };

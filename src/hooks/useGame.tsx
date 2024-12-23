@@ -40,9 +40,7 @@ export function useGame(config: Config) {
 
         const opacityId = setTimeout(() => {
           const sumPrevNumbers = arr.reduce((acc, curr) => acc + curr, 0);
-          // si sale 3 y el min es 0 y el max 9
-          // necesitamos que el proximo número esté entre -3 y 6
-          // 0 - 3 = -3 y 9 - 3 = 6
+
           const rand = randomNumber(
             config.limitMin - sumPrevNumbers,
             config.limitMax - sumPrevNumbers,
