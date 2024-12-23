@@ -29,7 +29,10 @@ export default function App() {
       <header className="mt-10">
         <h1 className="text-5xl">Fast Calc</h1>
 
-        <ButtonMenu onClick={() => setShowConfig(!showConfig)} />
+        <ButtonMenu
+          onClick={() => setShowConfig(!showConfig)}
+          isOpen={showConfig}
+        />
       </header>
 
       <div className="flex flex-col gap-12 items-center grow">
@@ -69,8 +72,6 @@ export default function App() {
           showConfig ? "" : "-translate-x-full"
         }`}
       >
-        <ButtonMenu onClick={() => setShowConfig(!showConfig)} />
-
         <Config config={config} setConfig={setConfig} />
       </aside>
 

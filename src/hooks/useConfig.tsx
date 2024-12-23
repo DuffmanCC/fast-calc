@@ -7,12 +7,12 @@ export function useConfig() {
   const isFirstRender = useRef(true);
 
   useEffect(() => {
-    const config = localStorage.getItem("config");
+    const savedConfig = localStorage.getItem("config");
 
-    if (config) {
-      const { speed, numberOfRounds, min, max, includeZero } =
-        JSON.parse(config);
-      setConfig({ speed, numberOfRounds, min, max, includeZero });
+    if (savedConfig) {
+      const parsedConfig = JSON.parse(savedConfig);
+      const combinedConfig = { ...DEFAULT_CONFIG, ...parsedConfig };
+      setConfig(combinedConfig);
     }
   }, []);
 
@@ -22,14 +22,7 @@ export function useConfig() {
       return;
     }
 
-    const newConfig = {
-      speed: config.speed,
-      numberOfRounds: config.numberOfRounds,
-      min: config.min,
-      max: config.max,
-      includeZero: config.includeZero,
-    };
-    localStorage.setItem("config", JSON.stringify(newConfig));
+    localStorage.setItem("config", JSON.stringify(config));
   }, [config]);
 
   return {

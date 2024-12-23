@@ -4,4 +4,6 @@ export type Config = {
   min: number;
   max: number;
   includeZero: boolean;
+  limitMin: number;
+  limitMax: number;
 };

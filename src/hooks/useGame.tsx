@@ -33,11 +33,21 @@ export function useGame(config: Config) {
       setArr((prev) => [...prev, rand]);
       setRound((prev) => prev + 1);
 
+      const arr = [rand];
+
       const intervalId = setInterval(() => {
         setOpacity(false);
 
         const opacityId = setTimeout(() => {
-          const rand = randomNumber(config.min, config.max, config.includeZero);
+          const sumPrevNumbers = arr.reduce((acc, curr) => acc + curr, 0);
+
+          const rand = randomNumber(
+            config.limitMin - sumPrevNumbers,
+            config.limitMax - sumPrevNumbers,
+            config.includeZero
+          );
+
+          arr.push(rand);
           setArr((prev) => [...prev, rand]);
           setRound((prev) => prev + 1);
 
