@@ -12,11 +12,11 @@ export const DEFAULT_CONFIG: Config = {
   includeZero: false,
 };
 export const CONFIG_LABELS = {
-  speed: "Speed",
+  speed: "Speed (ms)",
   numberOfRounds: "Rounds",
   min: "Min",
   max: "Max",
   limitMin: "Limit sum min",
   limitMax: "Limit sum max",
-  includeZero: "Include zero",
+  includeZero: "Include zero?",
 };
