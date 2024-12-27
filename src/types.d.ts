@@ -7,3 +7,5 @@ export type Config = {
   limitMin: number;
   limitMax: number;
 };
+
+export type ConfigKeys = keyof Config;

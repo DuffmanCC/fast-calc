@@ -77,7 +77,7 @@ export default function App() {
 
       {showCountdown && <Countdown init={3} />}
 
-      <footer className="bg-black text-white px-4 py-2 w-full font-mono">
+      <footer className="bg-black text-white px-4 py-2 w-full font-mono overflow-x-auto">
         {JSON.stringify(arr)}
       </footer>
     </main>
