@@ -52,7 +52,7 @@ export function useGame(config: Config) {
           setRound((prev) => prev + 1);
 
           setOpacity(true);
-          clearInterval(opacityId);
+          clearTimeout(opacityId);
         }, OPACITY_DURATION);
       }, config.speed);
 

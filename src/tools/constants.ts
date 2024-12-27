@@ -11,12 +11,13 @@ export const DEFAULT_CONFIG: Config = {
   limitMax: 0,
   includeZero: false,
 };
-export const CONFIG_LABELS = {
-  speed: "Speed (ms)",
-  numberOfRounds: "Rounds",
-  min: "Min",
-  max: "Max",
-  limitMin: "Limit sum min",
-  limitMax: "Limit sum max",
-  includeZero: "Include zero?",
+
+export const CONFIG = {
+  speed: { label: "Speed (ms)", min: 75, max: 5000, error: "" },
+  numberOfRounds: { label: "Rounds", min: 1, max: 100, error: "" },
+  min: { label: "Next min", min: -10000, max: 10000, error: "" },
+  max: { label: "Next max", min: -10000, max: 10000, error: "" },
+  limitMin: { label: "Limit sum min", min: -10000, max: 10000, error: "" },
+  limitMax: { label: "Limit sum max", min: -10000, max: 10000, error: "" },
+  includeZero: { label: "Include zero?", min: 0, max: 0, error: "" },
 };
