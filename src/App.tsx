@@ -1,4 +1,5 @@
 import { useState } from "react";
+import packageJson from "../package.json";
 import Button from "./components/Button";
 import ButtonMenu from "./components/ButtonMenu";
 import Config from "./components/Config";
@@ -68,11 +69,15 @@ export default function App() {
       </div>
 
       <aside
-        className={`bg-slate-300 absolute inset-0 block transition ${
+        className={`bg-slate-300 absolute inset-0 flex flex-col justify-between transition ${
           showConfig ? "" : "-translate-x-full"
         }`}
       >
         <Config config={config} setConfig={setConfig} />
+
+        <p>
+          Made with ❤️ by {packageJson.author} - v{packageJson.version}
+        </p>
       </aside>
 
       {showCountdown && <Countdown init={3} />}

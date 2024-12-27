@@ -1,8 +1,9 @@
 {
   "name": "calulation",
   "private": true,
-  "version": "1.5",
+  "version": "1.6",
   "type": "module",
+  "author": "Carlos Ortiz",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
