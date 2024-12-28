@@ -62,7 +62,10 @@ export default function App() {
 
           <Button onClick={reset}>Reset</Button>
 
-          <Button onClick={() => setShowResult(true)} disabled={!isFinished}>
+          <Button
+            onClick={() => setShowResult(true)}
+            disabled={!isFinished || showResult}
+          >
             Show Result
           </Button>
         </div>
@@ -75,14 +78,15 @@ export default function App() {
       >
         <Config config={config} setConfig={setConfig} />
 
-        <p>
-          Made with ❤️ by {packageJson.author} - v{packageJson.version}
+        <p className="p-2 text-sm text-slate-700">
+          Made with ❤️ by {packageJson.author}-{" "}
+          <small className="text-xs">v{packageJson.version}</small>
         </p>
       </aside>
 
       {showCountdown && <Countdown init={3} />}
 
-      <footer className="bg-black text-white px-4 py-2 w-full font-mono overflow-x-auto">
+      <footer className="bg-slate-900 text-white px-4 py-2 w-full font-mono overflow-x-auto">
         {JSON.stringify(arr)}
       </footer>
     </main>
