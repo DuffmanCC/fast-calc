@@ -4,6 +4,7 @@ interface InputProps {
   value: number;
   min?: number;
   max?: number;
+  step?: number;
   error?: string | null;
 }
 
@@ -13,6 +14,7 @@ export default function Input({
   value = 0,
   min,
   max,
+  step,
   error,
 }: InputProps) {
   return (
@@ -25,6 +27,7 @@ export default function Input({
         value={value}
         min={min}
         max={max}
+        step={step}
       />
 
       {error && <small className="text-red-500">{error}</small>}

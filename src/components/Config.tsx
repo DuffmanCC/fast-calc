@@ -42,6 +42,7 @@ export default function Config({ setConfig, config }: ConfigProps) {
             value={value}
             min={CONFIG[key as ConfigKeys].min}
             max={CONFIG[key as ConfigKeys].max}
+            step={CONFIG[key as ConfigKeys].step}
             error={CONFIG[key as ConfigKeys].error}
           />
         ) : (
