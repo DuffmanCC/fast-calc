@@ -23,15 +23,14 @@ export default function App() {
     setShowResult,
     showCountdown,
     showSoroban,
-    sorobanColumns,
   } = useGame(config);
 
   const [showConfig, setShowConfig] = useState(false);
 
   return (
-    <div className="bg-slate-100 flex flex-col gap-2 h-screen p-4">
-      <header className="">
-        <h1 className="text-5xl text-center">Fast Calc</h1>
+    <div className="bg-slate-100 flex flex-col gap-2 h-screen p-4 max-w-lg border mx-auto items-center relative">
+      <header>
+        <h1 className="text-5xl text-center relative z-20">Play Soroban</h1>
 
         <ButtonMenu
           onClick={() => setShowConfig(!showConfig)}
@@ -39,8 +38,8 @@ export default function App() {
         />
       </header>
 
-      <main className="grow relative container mx-auto text-center flex flex-col items-center gap-8 max-w-screen-sm bg-slate-100">
-        <p className="text-6x">Round: {round ? round : ""}</p>
+      <main className="grow relative flex flex-col items-center justify-around max-w-screen-sm bg-slate-100">
+        <p className="text-2xl h-8">{round ? "Round: " + round : ""}</p>
 
         <p
           className={`text-[7rem] h-[8rem] leading-none transition-opacity duration-75 ${
@@ -73,14 +72,12 @@ export default function App() {
           </Button>
         </div>
 
-        {showSoroban && (
-          <Soroban data={JSON.stringify(arr)} columns={sorobanColumns} />
-        )}
+        {showSoroban && <Soroban data={JSON.stringify(arr)} columns={7} />}
       </main>
 
       <aside
-        className={`bg-slate-300 absolute inset-0 flex flex-col justify-between transition ${
-          showConfig ? "" : "-translate-x-full"
+        className={`bg-slate-300 absolute z-10 inset-0 flex flex-col justify-between transition ${
+          showConfig ? "" : "-translate-y-full"
         }`}
       >
         <Config config={config} setConfig={setConfig} />
@@ -93,7 +90,7 @@ export default function App() {
 
       {showCountdown && <Countdown init={3} />}
 
-      <footer className="bg-slate-900 text-white px-4 py-2 w-full font-mono overflow-x-auto">
+      <footer className="bg-slate-900 text-white text-center px-4 py-2 w-full font-mono overflow-x-auto">
         {JSON.stringify(arr)}
       </footer>
     </div>

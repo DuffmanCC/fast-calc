@@ -53,3 +53,8 @@ test("beads show 7", () => {
   const beads = beadsCol(7);
   beads.should.deep.equal([true, false, false, true, true]);
 });
+
+test("beads show 4", () => {
+  const beads = beadsCol(4);
+  beads.should.deep.equal([false, false, false, false, false]);
+});

@@ -6,7 +6,7 @@ import App from "../src/App";
 
 test("render title", () => {
   render(<App />);
-  const title = screen.getByText("Fast Calc");
+  const title = screen.getByText("Play Soroban");
   expect(title).toBeTruthy();
 });
 

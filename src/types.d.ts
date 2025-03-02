@@ -13,6 +13,8 @@ export type ConfigFields = {
     min?: number;
     max?: number;
     step?: number;
+    error?: string;
+    condition?: (value: number, config: Config) => boolean;
   };
 };
 

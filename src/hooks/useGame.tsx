@@ -22,10 +22,6 @@ export function useGame(config: Config) {
     if (intervalId) clearInterval(intervalId);
   }
 
-  function calcColumns() {
-    return config.limitMax.toString().length;
-  }
-
   useEffect(() => {
     if (!isPlaying) return;
 
@@ -97,6 +93,5 @@ export function useGame(config: Config) {
     setShowResult,
     showCountdown,
     showSoroban: config.showSoroban,
-    sorobanColumns: calcColumns(),
   };
 }

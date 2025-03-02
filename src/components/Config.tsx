@@ -10,7 +10,7 @@ interface ConfigProps {
 
 export default function Config({ setConfig, config }: ConfigProps) {
   return (
-    <form className="flex flex-col gap-4 justify-center w-full p-4 py-20">
+    <form className="flex flex-col gap-6 justify-center w-full px-8 py-24">
       {Object.entries(config).map(([key, value]) =>
         typeof value === "number" ? (
           <Input
@@ -23,6 +23,12 @@ export default function Config({ setConfig, config }: ConfigProps) {
             min={CONFIG_FIELDS[key].min}
             max={CONFIG_FIELDS[key].max}
             step={CONFIG_FIELDS[key].step}
+            error={
+              CONFIG_FIELDS[key].condition &&
+              CONFIG_FIELDS[key].condition(value, config)
+                ? CONFIG_FIELDS[key].error
+                : ""
+            }
           />
         ) : (
           <Checkbox
