@@ -7,7 +7,7 @@ export default function Beads({
 }) {
   return (
     <div
-      className={`w-10 h-6 py-px transition-transform ralative ${
+      className={`w-10 h-6 py-[1px] transition-transform ralative ${
         move ? " translate-y-6" : ""
       } `}
     >

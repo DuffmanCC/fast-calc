@@ -28,9 +28,9 @@ export default function App() {
   const [showConfig, setShowConfig] = useState(false);
 
   return (
-    <div className="bg-slate-100 flex flex-col gap-2 h-screen p-4 max-w-lg border mx-auto items-center relative">
+    <div className="bg-slate-100 flex flex-col gap-2 h-screen p-4 max-w-screen-sm overflow-auto border mx-auto items-center relative">
       <header>
-        <h1 className="text-5xl text-center relative z-20">Play Soroban</h1>
+        <h1 className="text-4xl text-center relative z-20">Play Soroban</h1>
 
         <ButtonMenu
           onClick={() => setShowConfig(!showConfig)}
@@ -38,7 +38,11 @@ export default function App() {
         />
       </header>
 
-      <main className="grow relative flex flex-col items-center justify-around max-w-screen-sm bg-slate-100">
+      <main
+        className={`grow relative flex flex-col items-center gap-8 bg-slate-100 ${
+          showConfig ? "hidden" : ""
+        }`}
+      >
         <p className="text-2xl h-8">{round ? "Round: " + round : ""}</p>
 
         <p
@@ -76,22 +80,24 @@ export default function App() {
       </main>
 
       <aside
-        className={`bg-slate-300 absolute z-10 inset-0 flex flex-col justify-between transition ${
+        className={`bg-slate-300 absolute z-10 inset-0 flex flex-col h-screen justify-between overflow-hidden transition ${
           showConfig ? "" : "-translate-y-full"
         }`}
       >
         <Config config={config} setConfig={setConfig} />
+      </aside>
+
+      {showCountdown && <Countdown init={3} />}
+
+      <footer className="w-full">
+        <div className="bg-slate-900 text-white text-center px-4 py-2 w-full font-mono overflow-x-auto">
+          {JSON.stringify(arr)}
+        </div>
 
         <p className="p-2 text-sm text-slate-700 text-center">
           Made with ❤️ by {packageJson.author}-{" "}
           <small className="text-xs">v{packageJson.version}</small>
         </p>
-      </aside>
-
-      {showCountdown && <Countdown init={3} />}
-
-      <footer className="bg-slate-900 text-white text-center px-4 py-2 w-full font-mono overflow-x-auto">
-        {JSON.stringify(arr)}
       </footer>
     </div>
   );

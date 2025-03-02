@@ -16,7 +16,7 @@ export default function Soroban({
         <div className="h-[.33rem] bg-white relative top-[.33rem]"></div>
       </div>
 
-      <div className="flex gap-1 border-[1rem] border-slate-700 p-[.1rem] pt-0">
+      <div className="flex gap-.5 border-[1rem] border-slate-700 p-[.1rem] pt-0">
         {Array.from({ length: sorobanSize })
           .map((_, i) => (
             <div className="flex flex-col gap-4 relative " key={i}>
