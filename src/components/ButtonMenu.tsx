@@ -7,7 +7,7 @@ export default function ButtonMenu({
 }) {
   return (
     <button
-      className="absolute right-4 top-4 hover:scale-105 z-10"
+      className="absolute right-4 top-6 hover:scale-105 z-10"
       onClick={onClick}
     >
       <svg

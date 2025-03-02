@@ -6,6 +6,7 @@ interface CheckboxProps {
   required?: boolean;
   onClick?: () => void;
   children?: ReactNode;
+  value: boolean;
 }
 
 export default function Checkbox({
@@ -14,6 +15,7 @@ export default function Checkbox({
   required = false,
   onClick,
   children,
+  value,
 }: CheckboxProps) {
   return (
     <label className="flex flex-col gap-1 items-start" onClick={onClick}>
@@ -24,12 +26,13 @@ export default function Checkbox({
           type="checkbox"
           name={name}
           className={`
-          w-8 h-8 appearance-none peer
-          border rounded text-white bg-white
-          checked:bg-blue-500 checked:border-0
-          focus:border-blue-500
+            w-8 h-8 appearance-none peer
+            border rounded text-white bg-white
+            checked:bg-blue-500 checked:border-0
+            focus:border-blue-500
           `}
           required={required}
+          defaultChecked={value}
         />
 
         <svg

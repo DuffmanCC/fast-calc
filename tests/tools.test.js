@@ -1,6 +1,6 @@
 import "chai/register-should";
 import { test } from "vitest";
-import { randomNumber } from "../src/tools/helpers";
+import { beadsCol, randomNumber } from "../src/tools/helpers";
 
 test("generate random number", () => {
   const number = randomNumber(1, 10);
@@ -37,4 +37,19 @@ test("generate random number", () => {
   const number = randomNumber(-1, 1, false);
   number.should.be.within(-1, 1);
   number.should.not.equal(0);
+});
+
+test("beads show 0", () => {
+  const beads = beadsCol(0);
+  beads.should.deep.equal([false, true, true, true, true]);
+});
+
+test("beads show 1", () => {
+  const beads = beadsCol(1);
+  beads.should.deep.equal([false, false, true, true, true]);
+});
+
+test("beads show 7", () => {
+  const beads = beadsCol(7);
+  beads.should.deep.equal([true, false, false, true, true]);
 });

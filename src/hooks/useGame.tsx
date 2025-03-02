@@ -22,6 +22,10 @@ export function useGame(config: Config) {
     if (intervalId) clearInterval(intervalId);
   }
 
+  function calcColumns() {
+    return config.limitMax.toString().length;
+  }
+
   useEffect(() => {
     if (!isPlaying) return;
 
@@ -29,7 +33,11 @@ export function useGame(config: Config) {
 
     const countdownId = setTimeout(() => {
       // first round without delay
-      const rand = randomNumber(config.min, config.max, config.includeZero);
+      const rand = randomNumber(
+        config.limitMin,
+        config.limitMax,
+        config.includeZero
+      );
       setArr((prev) => [...prev, rand]);
       setRound((prev) => prev + 1);
 
@@ -88,5 +96,7 @@ export function useGame(config: Config) {
     reset,
     setShowResult,
     showCountdown,
+    showSoroban: config.showSoroban,
+    sorobanColumns: calcColumns(),
   };
 }
