@@ -36,7 +36,7 @@ export default function Soroban({
         {Array.from({ length: columns }).map((_, i) => (
           <div className="flex flex-col gap-4 relative" key={i}>
             <div className="w-1 bg-slate-700 left-[1.15rem] -top-[.25rem] -bottom-[.25rem] absolute"></div>
-            <div className="h-12 border">
+            <div className="h-12">
               <Beads move={beads[i][0]} />
             </div>
             <div className="h-[7.5rem]">
