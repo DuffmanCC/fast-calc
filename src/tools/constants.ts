@@ -3,7 +3,7 @@ import { Config, ConfigFields } from "../types";
 
 export const OPACITY_DURATION = 75;
 export const COUNTDOWN_DURATION = 3000;
-export const CONFIG_KEY = `config-v + ${packageJson.version}`;
+export const CONFIG_KEY = `config-v${packageJson.version}`;
 export const DEFAULT_CONFIG: Config = {
   speed: 1500,
   numberOfRounds: 10,

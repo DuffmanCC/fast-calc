@@ -1,7 +1,7 @@
 {
   "name": "calulation",
   "private": true,
-  "version": "1.10",
+  "version": "1.10.1",
   "type": "module",
   "author": "Carlos Ortiz",
   "scripts": {
