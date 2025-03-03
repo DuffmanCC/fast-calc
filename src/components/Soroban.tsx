@@ -5,7 +5,7 @@ export default function Soroban({
   data,
   columns = 1,
 }: {
-  data: string;
+  data: number;
   columns?: number;
 }) {
   const { beads, sorobanSize } = useSoroban(data, columns);

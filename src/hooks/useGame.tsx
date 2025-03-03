@@ -22,6 +22,10 @@ export function useGame(config: Config) {
     if (intervalId) clearInterval(intervalId);
   }
 
+  function getResult(arr: number[]) {
+    return arr.reduce((acc, curr) => acc + curr, 0);
+  }
+
   useEffect(() => {
     if (!isPlaying) return;
 
@@ -86,6 +90,7 @@ export function useGame(config: Config) {
     setIsPlaying,
     arr,
     round,
+    result: getResult(arr),
     showResult,
     isFinished,
     opacity,

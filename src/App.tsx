@@ -16,6 +16,7 @@ export default function App() {
     setIsPlaying,
     arr,
     round,
+    result,
     showResult,
     opacity,
     isFinished,
@@ -52,7 +53,7 @@ export default function App() {
           data-testid="number"
         >
           {showResult
-            ? arr.reduce((acc, curr) => acc + curr, 0)
+            ? result
             : arr[round - 1] >= 0
             ? `+${arr[round - 1]}`
             : arr[round - 1]}
@@ -76,7 +77,7 @@ export default function App() {
           </Button>
         </div>
 
-        {showSoroban && <Soroban data={JSON.stringify(arr)} columns={7} />}
+        {showSoroban && <Soroban data={result} columns={7} />}
       </main>
 
       <aside
