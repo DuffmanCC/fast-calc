@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import packageJson from "../../package.json";
-import { DEFAULT_CONFIG } from "../tools/constants";
+
+import { CONFIG_KEY, DEFAULT_CONFIG } from "../tools/constants";
 
 export function useConfig() {
   const [config, setConfig] = useState(DEFAULT_CONFIG);
@@ -8,9 +8,7 @@ export function useConfig() {
   const isFirstRender = useRef(true);
 
   useEffect(() => {
-    const savedConfig = localStorage.getItem(
-      `config-v + ${packageJson.version}`
-    );
+    const savedConfig = localStorage.getItem(CONFIG_KEY);
 
     if (savedConfig) {
       const parsedConfig = JSON.parse(savedConfig);
@@ -25,7 +23,7 @@ export function useConfig() {
       return;
     }
 
-    localStorage.setItem("config", JSON.stringify(config));
+    localStorage.setItem(CONFIG_KEY, JSON.stringify(config));
   }, [config]);
 
   return {
