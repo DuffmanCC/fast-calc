@@ -1,5 +1,5 @@
 import useSoroban from "../hooks/useSoroban";
-import Beads from "./Beads";
+import Beads from "./Bead";
 
 export default function Soroban({
   data,
@@ -25,10 +25,7 @@ export default function Soroban({
                 <Beads move={beads[i][0]} />
               </div>
               <div className="h-[7.6rem]">
-                <Beads
-                  move={beads[i][1]}
-                  black={(sorobanSize - 1 - i) % 3 === 0}
-                />
+                <Beads move={beads[i][1]} black={i % 3 === 0} />
                 <Beads move={beads[i][2]} />
                 <Beads move={beads[i][3]} />
                 <Beads move={beads[i][4]} />

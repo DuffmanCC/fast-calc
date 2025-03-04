@@ -1,4 +1,4 @@
-export default function Beads({
+export default function Bead({
   move = false,
   black = false,
 }: {

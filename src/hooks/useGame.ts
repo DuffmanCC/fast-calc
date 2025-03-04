@@ -12,6 +12,7 @@ export function useGame(config: Config) {
   const [opacity, setOpacity] = useState(true);
   const [showCountdown, setShowCountdown] = useState(false);
   const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
+  const [showConfig, setShowConfig] = useState(false);
 
   function reset() {
     setIsPlaying(false);
@@ -71,7 +72,7 @@ export function useGame(config: Config) {
         () => clearInterval(intervalId),
         config.speed * config.numberOfRounds - 1
       );
-    }, COUNTDOWN_DURATION);
+    }, COUNTDOWN_DURATION * 1000);
 
     return () => {
       clearTimeout(countdownId);
@@ -98,5 +99,7 @@ export function useGame(config: Config) {
     setShowResult,
     showCountdown,
     showSoroban: config.showSoroban,
+    showConfig,
+    setShowConfig,
   };
 }
