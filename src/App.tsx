@@ -97,7 +97,7 @@ export default function App() {
         </div>
 
         <p className="p-2 text-sm text-slate-700 text-center">
-          Made with ❤️ by {packageJson.author}-{" "}
+          Made with ❤️ by DuffmanCC-{" "}
           <small className="text-xs">v{packageJson.version}</small>
         </p>
       </footer>
