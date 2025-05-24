@@ -30,7 +30,7 @@ export default function App() {
   } = useGame(config);
 
   return (
-    <div className="bg-slate-100 flex flex-col gap-2 h-dvh p-4 max-w-screen-sm overflow-auto border mx-auto items-center relative">
+    <div className="bg-slate-100 flex flex-col gap-4 min-h-dvh p-4 max-w-screen-sm overflow-auto border mx-auto items-center relative">
       <header>
         <h1 className="text-4xl text-center relative z-20">Play Soroban</h1>
 
@@ -48,9 +48,11 @@ export default function App() {
         <p className="text-2xl h-8">{round ? "Round: " + round : ""}</p>
 
         <p
-          className={`text-[8rem] h-[9rem] leading-none transition-opacity duration-75 ${
-            opacity ? "opacity-100" : "opacity-0"
-          }`}
+          className={`leading-none transition-opacity grow duration-75 flex items-center
+            ${opacity ? "opacity-100" : "opacity-0"} 
+            ${
+              showSoroban ? "text-[9rem] h-[10rem]" : "text-[13rem] h-[14rem]"
+            }`}
           data-testid="number"
         >
           {showResult
@@ -82,7 +84,7 @@ export default function App() {
       </main>
 
       <aside
-        className={`bg-slate-300 absolute z-10 inset-0 flex flex-col h-dvh justify-between overflow-hidden transition ${
+        className={`bg-slate-300 absolute z-10 inset-0 flex flex-col min-h-dvh justify-between overflow-hidden transition ${
           showConfig ? "" : "-translate-y-full"
         }`}
       >
@@ -97,8 +99,10 @@ export default function App() {
         </div>
 
         <p className="p-2 text-sm text-slate-700 text-center">
-          Made with ❤️ by DuffmanCC-{" "}
-          <small className="text-xs">v{packageJson.version}</small>
+          Made with ❤️ by DuffmanCC{" "}
+          <small className="text-xs text-slate-500">
+            v{packageJson.version}
+          </small>
         </p>
       </footer>
     </div>
