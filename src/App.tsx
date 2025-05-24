@@ -30,7 +30,7 @@ export default function App() {
   } = useGame(config);
 
   return (
-    <div className="bg-slate-100 flex flex-col gap-2 h-screen p-4 max-w-screen-sm overflow-auto border mx-auto items-center relative">
+    <div className="bg-slate-100 flex flex-col gap-2 h-dvh p-4 max-w-screen-sm overflow-auto border mx-auto items-center relative">
       <header>
         <h1 className="text-4xl text-center relative z-20">Play Soroban</h1>
 
@@ -48,7 +48,7 @@ export default function App() {
         <p className="text-2xl h-8">{round ? "Round: " + round : ""}</p>
 
         <p
-          className={`text-[7rem] h-[8rem] leading-none transition-opacity duration-75 ${
+          className={`text-[8rem] h-[9rem] leading-none transition-opacity duration-75 ${
             opacity ? "opacity-100" : "opacity-0"
           }`}
           data-testid="number"
@@ -60,7 +60,7 @@ export default function App() {
             : arr[round - 1]}
         </p>
 
-        <div className="flex flex-col gap-4">
+        <div className="flex gap-4">
           <Button
             onClick={() => setIsPlaying(!isPlaying)}
             disabled={isPlaying || isFinished}
@@ -74,7 +74,7 @@ export default function App() {
             onClick={() => setShowResult(true)}
             disabled={!isFinished || showResult}
           >
-            Show Result
+            Result
           </Button>
         </div>
 
@@ -82,7 +82,7 @@ export default function App() {
       </main>
 
       <aside
-        className={`bg-slate-300 absolute z-10 inset-0 flex flex-col h-screen justify-between overflow-hidden transition ${
+        className={`bg-slate-300 absolute z-10 inset-0 flex flex-col h-dvh justify-between overflow-hidden transition ${
           showConfig ? "" : "-translate-y-full"
         }`}
       >

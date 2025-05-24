@@ -30,7 +30,7 @@ test("Start is disabled after starting", async () => {
 
 test("Show Result is disabled at the begining", () => {
   render(<App />);
-  const button = screen.getByText("Show Result");
+  const button = screen.getByText("Result");
   expect(button).toBeDisabled();
 });
 
