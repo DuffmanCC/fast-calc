@@ -32,7 +32,7 @@ export default function Checkbox({
             focus:border-blue-500
           `}
           required={required}
-          defaultChecked={value}
+          checked={value}
         />
 
         <svg
