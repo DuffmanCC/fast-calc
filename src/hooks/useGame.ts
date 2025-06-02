@@ -27,6 +27,32 @@ export function useGame(config: Config) {
     return arr.reduce((acc, curr) => acc + curr, 0);
   }
 
+  function addGameToHistory() {
+    const gameHistory = JSON.parse(
+      localStorage.getItem("gameHistory") || "[]"
+    ) as { date: string; result: number }[];
+
+    const newGame = {
+      date: new Date().toISOString(),
+      result: getResult(arr),
+    };
+    gameHistory.push(newGame);
+    localStorage.setItem("gameHistory", JSON.stringify(gameHistory));
+  }
+
+  function addGameToSession() {
+    const gameSession = JSON.parse(
+      sessionStorage.getItem("gameSession") || "[]"
+    ) as { date: string; result: number }[];
+
+    const newGame = {
+      date: new Date().toISOString(),
+      result: getResult(arr),
+    };
+    gameSession.push(newGame);
+    sessionStorage.setItem("gameSession", JSON.stringify(gameSession));
+  }
+
   useEffect(() => {
     if (!isPlaying) return;
 
@@ -101,5 +127,7 @@ export function useGame(config: Config) {
     showSoroban: config.showSoroban,
     showConfig,
     setShowConfig,
+    addGameToHistory,
+    addGameToSession,
   };
 }

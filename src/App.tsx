@@ -27,12 +27,16 @@ export default function App() {
     showSoroban,
     showConfig,
     setShowConfig,
+    addGameToHistory,
+    addGameToSession,
   } = useGame(config);
 
   return (
     <div className="bg-slate-100 flex flex-col gap-4 min-h-dvh p-4 max-w-screen-sm overflow-auto border mx-auto items-center relative">
-      <header>
-        <h1 className="text-4xl text-center relative z-20">Play Soroban</h1>
+      <header className="text-slate-900">
+        <h1 className="text-3xl text-center relative z-20 uppercase">
+          Play Soroban
+        </h1>
 
         <ButtonMenu
           onClick={() => setShowConfig(!showConfig)}
@@ -73,7 +77,11 @@ export default function App() {
           <Button onClick={reset}>Reset</Button>
 
           <Button
-            onClick={() => setShowResult(true)}
+            onClick={() => {
+              setShowResult(true);
+              addGameToHistory();
+              addGameToSession();
+            }}
             disabled={!isFinished || showResult}
           >
             Result

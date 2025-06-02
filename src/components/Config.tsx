@@ -9,6 +9,14 @@ interface ConfigProps {
 }
 
 export default function Config({ setConfig, config }: ConfigProps) {
+  const gameHistory = JSON.parse(
+    localStorage.getItem("gameHistory") || "[]"
+  ) as { date: string; result: number }[];
+
+  const gameSession = JSON.parse(
+    sessionStorage.getItem("gameSession") || "[]"
+  ) as { date: string; result: number }[];
+
   return (
     <form className="flex flex-col gap-4 justify-center w-full px-8 py-24">
       {Object.entries(config).map(([key, value]) =>
@@ -39,6 +47,9 @@ export default function Config({ setConfig, config }: ConfigProps) {
           />
         )
       )}
+
+      <p>Total games: {gameHistory.length}</p>
+      <p>Session games: {gameSession.length}</p>
     </form>
   );
 }

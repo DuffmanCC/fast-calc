@@ -7,7 +7,7 @@ export default function ButtonMenu({
 }) {
   return (
     <button
-      className="absolute right-4 top-5 hover:scale-105 z-20"
+      className="absolute right-4 top-[1rem] hover:scale-110 z-20 transition-transform"
       onClick={onClick}
     >
       <svg
@@ -16,7 +16,7 @@ export default function ButtonMenu({
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        strokeWidth="2"
+        strokeWidth="1"
         strokeLinecap="round"
         strokeLinejoin="round"
       >
