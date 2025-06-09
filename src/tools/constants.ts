@@ -32,7 +32,7 @@ export const CONFIG_FIELDS: ConfigFields = {
     condition: (value: number) => value < 2 || value > 100,
   },
   limitMin: {
-    label: "Limit sum min",
+    label: "Min",
     min: 0,
     max: 9999999,
     step: 1,
@@ -41,7 +41,7 @@ export const CONFIG_FIELDS: ConfigFields = {
       value < 0 || value > 9999999 || value >= config.limitMax,
   },
   limitMax: {
-    label: "Limit sum max",
+    label: "Max",
     min: 1,
     max: 9999999,
     step: 1,
