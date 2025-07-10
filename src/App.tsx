@@ -102,7 +102,7 @@ export default function App() {
       {showCountdown && <Countdown init={COUNTDOWN_DURATION} />}
 
       <footer className={`${showConfig ? "hidden" : ""} w-full`}>
-        <div className="bg-slate-900 text-white text-center px-4 py-2 w-full font-mono overflow-x-auto">
+        <div className="bg-slate-900/90 text-white text-center px-4 py-2 w-full font-mono overflow-x-auto rounded-lg">
           {JSON.stringify(arr)}
         </div>
 

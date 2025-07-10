@@ -10,7 +10,7 @@ export default function Button({ children, onClick, disabled }: ButtonProps) {
   return (
     <button
       onClick={onClick}
-      className="border px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded disabled:opacity-50 disabled:cursor-not-allowed"
+      className="border px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
       disabled={disabled}
     >
       {children}
