@@ -22,7 +22,7 @@ export default function Input({
       {label}
       <input
         type="number"
-        className="border px-4 py-2 leading-none w-32 text-center rounded"
+        className="border px-4 py-2 leading-none w-32 text-center rounded-lg"
         onChange={onChange}
         value={value}
         min={min}

@@ -27,7 +27,7 @@ export default function Checkbox({
           name={name}
           className={`
             w-8 h-8 appearance-none peer
-            border rounded text-white bg-white
+            border rounded-lg text-white bg-white
             checked:bg-blue-500 checked:border-0
             focus:border-blue-500
           `}
